@@ -14,6 +14,7 @@ class Lliga(models.Model):
 class Equip(models.Model):
     nom = models.CharField(max_length=100)
     lliga = models.ForeignKey(Lliga, on_delete=models.CASCADE, related_name="equips")
+    ciutat = models.CharField(max_length=100)
 
     def __str__(self):
         return self.nom
@@ -22,6 +23,7 @@ class Jugador(models.Model):
     nom = models.CharField(max_length=100)
     posicio = models.CharField(max_length=50)
     equip = models.ForeignKey(Equip, on_delete=models.CASCADE, related_name="jugadors")
+    edat = models.IntegerField()
 
     def __str__(self):
         return f"{self.nom} ({self.equip.nom})"
